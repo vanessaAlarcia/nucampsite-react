@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
-
-class CampsiteInfo extends Component {
-    renderCampsite(campsite) {
+function RenderCampsite({campsite}) {
         return (
             <div className="col-md-5 m-2">
                 <Card>
@@ -17,9 +15,9 @@ class CampsiteInfo extends Component {
         );
     }
 
-    renderComments() {
-        if (this.props.campsite.comments) {
-            const commentsMarkup = this.props.campsite.comments.map(comment => {
+function RenderComments({comments}) {
+        if (comments) {
+            const commentsMarkup = comments.map(comment => {
                 return (
                     <div key={comment.id}>
                         <p>{comment.text}<br />--{comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
@@ -40,21 +38,22 @@ class CampsiteInfo extends Component {
         );
     }
 
-    render() {
+function CampsiteInfo(props) {
         // const campsite = this.props.campsite;
         //can also do this.props.campsite in the if condition
-        if (this.props.campsite) {
+        if (props.campsite) {
             return (
-                <div className="row">
-                    {this.renderCampsite(this.props.campsite)}
-                    {this.renderComments()}
+                <div className="container">
+                    <div className="row">
+                        <RenderCampsite campsite={props.campsite} />
+                        <RenderComments comments={props.campsite.comments} />
+                    </div>
                 </div>
             );
         }
         return (
             <div />
         );
-    }
     }
 
 
