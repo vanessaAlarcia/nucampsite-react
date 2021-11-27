@@ -1,4 +1,3 @@
-import { STATEMENT_OR_BLOCK_KEYS } from '@babel/types';
 import { createStore } from 'redux';
 import { Reducer, initialState } from './reducer';
 
@@ -7,5 +6,5 @@ export const ConfigureStore = () => {
         Reducer,
         initialState
     );
-    return state;
+    return store;
 };

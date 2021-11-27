@@ -15,8 +15,8 @@ const mapStateToProps = state => {
         comments: state.comments,
         partners: state.partners,
         promotions: state.promotions
-    }
-}
+    };
+};
 
 class Main extends Component {
 
