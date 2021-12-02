@@ -1,4 +1,5 @@
 import * as ActionTypes from './ActionTypes';
+import { CAMPSITES } from '../shared/campsites';
 
 //define an action creator function to add a comment, notice that we're making an object
 export const addComment = (campsiteId, rating, author, text) => ({
@@ -10,3 +11,22 @@ export const addComment = (campsiteId, rating, author, text) => ({
         text: text,
     }
 })
+
+export const fetchCampsites = () => dispatch => {
+    dispatch(campsitesLoading());
+    setTimeout(() => {dispatch(addCampsites(CAMPSITES))}, 2000);
+};
+
+export const campsitesLoading = () => ({
+    type: ActionTypes.CAMPSITES_LOADING
+});
+
+export const campsitesFailed = errMess => ({
+    type: ActionTypes.CAMPSITES_FAILED,
+    payload: errMess
+});
+
+export const addCampsites = campsites => ({
+    type: ActionTypes.ADD_CAMPSITES,
+    payload: campsites
+});
