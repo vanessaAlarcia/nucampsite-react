@@ -1,20 +1,20 @@
 import React from 'react';
 import { Card, CardImg, CardImgOverlay, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Loading } from './LoadingComponent'
-import { baseUrl } from '../shared/baseUrl'
+import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
+
 
 function RenderDirectoryItem({campsite}) {
             return (
-                    <Card>
-                        <Link to={`/directory/${campsite.id}`}>
+                <Card>
+                    <Link to={`/directory/${campsite.id}`}>
                             <CardImg width="100%" src={baseUrl + campsite.image} alt={campsite.name} />
                             <CardImgOverlay>
                                 <CardTitle>{campsite.name}</CardTitle>
                             </CardImgOverlay>
-                        </Link>
-                    </Card>
-                
+                    </Link>
+                </Card>
             );
         }
 
@@ -26,7 +26,6 @@ function Directory(props) {
             </div>
         );
     });
-    //q: why is this props.campsites.isLoading but campsiteinfocomponent is props.isLoading (line 150)
     if (props.campsites.isLoading) {
         return (
             <div className="container">
